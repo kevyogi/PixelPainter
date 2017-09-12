@@ -1,8 +1,8 @@
 var pixelPaint = document.getElementById("pixelPainter");
 var colorArray = ["FAEBD7", "00FFFF", "7FFFD4", "000000", "0000FF", "8A2BE2", "A52A2A", "FF7F50", "DC143C", "006400", "FFD700", "DAA520", "ADFF2F", "FF0000", "FF8C00", "FFB6C1", "FFFF00", "40E0D0", "4169E1", "6A5ACD"];
 var myColor = "";
-var gridDiv = document.createElement("div");
 var colorDiv = document.createElement("div");
+var gridDiv = document.createElement("div");
 var eraseButton = document.createElement("button");
 var clearButton = document.createElement("button");
 var createButton = document.createElement("button");
@@ -17,8 +17,8 @@ createButton.id = "create";
 heightBox.id = "theHeight";
 widthBox.id = "theWidth";
 
-pixelPainter.appendChild(gridDiv);
 pixelPainter.appendChild(colorDiv);
+pixelPainter.appendChild(gridDiv);
 pixelPainter.appendChild(eraseButton);
 pixelPainter.appendChild(clearButton);
 pixelPainter.appendChild(createButton);
@@ -29,7 +29,7 @@ eraseButton.innerHTML = "Erase";
 clearButton.innerHTML = "Clear";
 createButton.innerHTML = "Create";
 
-function createGrid(length, width){
+function createGrid(length, width, pixelSize){
   for(var i = 0; i < length; i++){
     var pixelLine = document.createElement("div");
     pixelLine.className = "pixelLine";
@@ -37,25 +37,28 @@ function createGrid(length, width){
     for(var j = 0; j < width; j++){
       var gridPixel = document.createElement("div");
       gridPixel.className = "gridPixel";
-      gridPixel.style.width = "20px";
-      gridPixel.style.height = "20px";
+      gridPixel.style.width = pixelSize.toString() + "px";
+      gridPixel.style.height = pixelSize.toString() + "px";
       gridPixel.addEventListener("click", addColor);
       pixelLine.appendChild(gridPixel);
     }
   }
-  for(var i = 0; i < colorArray.length; i++){
-    var palette = document.createElement("div");
-    palette.style.backgroundColor = colorArray[i];
-    palette.className = "palette";
-    palette.addEventListener("click", pickColor);
-    colorDiv.appendChild(palette);
+  for(var i = 0; i < colorArray.length;){
+    var paletteLine = document.createElement("div");
+    colorDiv.appendChild(paletteLine);
+    for(var j = 0; j < 2; j++){
+      var palette = document.createElement("div");
+      palette.style.backgroundColor = colorArray[i];
+      palette.className = "palette";
+      palette.addEventListener("click", pickColor);
+      paletteLine.appendChild(palette);
+      i++;
+    }
   }
   var pix = document.getElementsByClassName("gridPixel");
   var test = (parseInt(pix[0].style.width)*width) + ((width/10)*20);
   var test1 = test.toString() + "px";
   gridDiv.style.width = test1;
-  // console.log(test1);
-  // console.log(gridDiv.style.width);
 }
 
 function pickColor(){
@@ -81,21 +84,18 @@ function clear(){
   }
 }
 
-createGrid(10, 40);
+createGrid(10, 30, 20);
 
-// gridDiv.style.width = "600px";
-console.log(document.getElementById("grid").style.width);
-var pix = document.getElementsByClassName("gridPixel");
-console.log(document.getElementsByClassName("gridPixel"));
-// for (var i = 0; i < pix.length; i++) {
-//   pix[i].style.width = "20px";
-//   pix[i].style.height = "20px";
+
+// for(var i = 0; i < colorArray.length;){
+//   var paletteLine = document.createElement("div");
+//   colorDiv.appendChild(paletteLine);
+//   for(var j = 0; j < 2; j++){
+//     var palette = document.createElement("div");
+//     palette.style.backgroundColor = colorArray[i];
+//     palette.className = "palette";
+//     palette.addEventListener("click", pickColor);
+//     paletteLine.appendChild(palette);
+//     i++;
+//   }
 // }
-// console.log(pix[0].style.width);
-
-// var test  = parseInt(pix[0].style.width);
-// var test1 = Math.sqrt(pix.length)
-
-// console.log(test, test1);
-
-
