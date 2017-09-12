@@ -1,4 +1,5 @@
 var pixelPaint = document.getElementById("pixelPainter");
+var colorArray = ["FAEBD7", "00FFFF", "7FFFD4", "000000", "0000FF", "8A2BE2", "A52A2A", "FF7F50", "DC143C", "006400", "FFD700", "DAA520", "ADFF2F", "FF0000", "FF8C00", "FFB6C1", "FFFF00", "40E0D0", "4169E1", "6A5ACD"];
 
 var gridDiv = document.createElement("div");
 var colorDiv = document.createElement("div");
@@ -28,6 +29,13 @@ function createGrid(width, height){
     var gridBreak = document.createElement("br");
     gridDiv.appendChild(gridBreak);
   }
+}
+
+for(var i = 0; i < colorArray.length; i++){
+  var palette = document.createElement("div");
+  palette.style.backgroundColor = colorArray[i];
+  palette.className = "palette";
+  colorDiv.appendChild(palette);
 }
 
 createGrid(10, 10);
