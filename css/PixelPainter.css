@@ -1,8 +1,10 @@
+
+
 .gridPixel{
   border: 1px solid black;
   display: inline-block;
-  height: 50px;
-  width: 50px;
+  /*height: 20px;*/
+  /*width: 20px;*/
 }
 
 .palette{
@@ -12,6 +14,6 @@
   width: 24px;
 }
 
-#colorGrid{
+/*#grid{
   width: 600px;
-}
+}*/
