@@ -49,4 +49,10 @@ function addColor(){
   this.style.backgroundColor = myColor;
 }
 
+eraseButton.addEventListener("click", erase);
+function erase(){
+  myColor = "FFFFFF"
+  this.style.backgroundColor = myColor;
+}
+
 createGrid(10, 10);
