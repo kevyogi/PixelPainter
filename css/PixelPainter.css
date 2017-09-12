@@ -1,5 +1,13 @@
 .gridPixel{
   border: 1px solid black;
   display: inline-block;
+  height: 50px;
+  width: 50px;
 }
 
+.palette{
+  border: 1px solid black;
+  display: inline-block;
+  height: 24px;
+  width: 24px;
+}
