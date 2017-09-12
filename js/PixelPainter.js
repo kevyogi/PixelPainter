@@ -55,4 +55,12 @@ function erase(){
   this.style.backgroundColor = myColor;
 }
 
+clearButton.addEventListener("click", clear);
+function clear(){
+  var test = document.getElementsByClassName("gridPixel");
+  for(var i = 0; i < test.length; i++){
+    test[i].style.backgroundColor = "FFFFFF";
+  }
+}
+
 createGrid(10, 10);
