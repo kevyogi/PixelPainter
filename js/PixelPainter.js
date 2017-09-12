@@ -1,6 +1,6 @@
 var pixelPaint = document.getElementById("pixelPainter");
 var colorArray = ["FAEBD7", "00FFFF", "7FFFD4", "000000", "0000FF", "8A2BE2", "A52A2A", "FF7F50", "DC143C", "006400", "FFD700", "DAA520", "ADFF2F", "FF0000", "FF8C00", "FFB6C1", "FFFF00", "40E0D0", "4169E1", "6A5ACD"];
-
+var myColor = "";
 var gridDiv = document.createElement("div");
 var colorDiv = document.createElement("div");
 var eraseButton = document.createElement("button");
@@ -25,6 +25,7 @@ function createGrid(width, height){
       var gridPixel = document.createElement("div");
       gridPixel.className = "gridPixel";
       gridDiv.appendChild(gridPixel);
+      gridPixel.addEventListener("click", addColor);
     }
     var gridBreak = document.createElement("br");
     gridDiv.appendChild(gridBreak);
@@ -36,6 +37,16 @@ for(var i = 0; i < colorArray.length; i++){
   palette.style.backgroundColor = colorArray[i];
   palette.className = "palette";
   colorDiv.appendChild(palette);
+  palette.addEventListener("click", pickColor);
+}
+
+function pickColor(){
+  myColor = this.style.backgroundColor;
+  console.log(myColor);
+}
+
+function addColor(){
+  this.style.backgroundColor = myColor;
 }
 
 createGrid(10, 10);
