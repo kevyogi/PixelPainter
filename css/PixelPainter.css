@@ -1,3 +1,16 @@
+/*html{
+  background: url(https://dms.hallco.org/web/wp-content/uploads/art.jpg) no-repeat center center fixed;
+}
+*/
+body{
+  background-image: url("https://i.pinimg.com/736x/39/71/f1/3971f10939e33d30ef7905b81c96c43b--oil-painting-tips-artist-painting.jpg");
+  background-repeat: no-repeat;
+  min-height: 100%;
+  min-width: 1024px;
+  width: 100%;
+  height: auto;
+}
+
 #pixelPainter{
   margin: auto;
   text-align: center;
@@ -13,7 +26,7 @@
 }
 
 .gridPixel{
-  border: 1px solid black;
+  border: 1px dotted black;
   display: inline-block;
 }
 
@@ -56,9 +69,6 @@
   margin-bottom: 15px;
   font-family: 'Amatic SC', cursive;
   font-size: 30px;
-  /*height: 50px;
-  width: 100%;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  border: 1px solid black;*/
+
+
 }
