@@ -1,29 +1,23 @@
 var pixelPaint = document.getElementById("pixelPainter");
+var theTitle = document.getElementById("title");
 var colorArray = ["FAEBD7", "00FFFF", "7FFFD4", "000000", "0000FF", "8A2BE2", "A52A2A", "FF7F50", "DC143C", "006400", "FFD700", "DAA520", "ADFF2F", "FF0000", "FF8C00", "FFB6C1", "FFFF00", "40E0D0", "4169E1", "6A5ACD"];
 var myColor = "";
+var onOff = 0;
 var colorDiv = document.createElement("div");
 var gridDiv = document.createElement("div");
 var eraseButton = document.createElement("button");
 var clearButton = document.createElement("button");
 var createButton = document.createElement("button");
-var heightBox = document.createElement("input");
-var widthBox = document.createElement("input");
 
 gridDiv.id = "grid";
 colorDiv.id = "colorGrid";
 eraseButton.id = "erase";
 clearButton.id = "clear";
-createButton.id = "create";
-heightBox.id = "theHeight";
-widthBox.id = "theWidth";
 
 pixelPainter.appendChild(colorDiv);
 pixelPainter.appendChild(gridDiv);
-pixelPainter.appendChild(eraseButton);
-pixelPainter.appendChild(clearButton);
-pixelPainter.appendChild(createButton);
-pixelPainter.appendChild(heightBox);
-pixelPainter.appendChild(widthBox);
+colorGrid.appendChild(eraseButton);
+colorGrid.appendChild(clearButton);
 
 eraseButton.innerHTML = "Erase";
 clearButton.innerHTML = "Clear";
@@ -40,6 +34,7 @@ function createGrid(length, width, pixelSize){
       gridPixel.style.width = pixelSize.toString() + "px";
       gridPixel.style.height = pixelSize.toString() + "px";
       gridPixel.addEventListener("click", addColor);
+      gridPixel.addEventListener("mouseover", paint);
       pixelLine.appendChild(gridPixel);
     }
   }
@@ -59,15 +54,31 @@ function createGrid(length, width, pixelSize){
   var test = (parseInt(pix[0].style.width)*width) + ((width/10)*20);
   var test1 = test.toString() + "px";
   gridDiv.style.width = test1;
+  theTitle.style.width = test1;
 }
 
 function pickColor(){
   myColor = this.style.backgroundColor;
-  console.log(myColor);
+  onOff = 1;
+  console.log(onOff);
 }
 
 function addColor(){
-  this.style.backgroundColor = myColor;
+  if(onOff === 0){
+    this.style.backgroundColor = myColor;
+    onOff = 1;
+    console.log(onOff);
+  }else if(onOff === 1){
+    onOff = 0;
+    this.style.backgroundColor = myColor;
+    console.log(onOff);
+  }
+}
+
+function paint(){
+  if(onOff === 0){
+    this.style.backgroundColor = myColor;
+  }
 }
 
 eraseButton.addEventListener("click", erase);
@@ -82,20 +93,9 @@ function clear(){
   for(var i = 0; i < test.length; i++){
     test[i].style.backgroundColor = "FFFFFF";
   }
+  onOff = 1;
 }
 
-createGrid(10, 30, 20);
+createGrid(20, 20, 20);
 
-
-// for(var i = 0; i < colorArray.length;){
-//   var paletteLine = document.createElement("div");
-//   colorDiv.appendChild(paletteLine);
-//   for(var j = 0; j < 2; j++){
-//     var palette = document.createElement("div");
-//     palette.style.backgroundColor = colorArray[i];
-//     palette.className = "palette";
-//     palette.addEventListener("click", pickColor);
-//     paletteLine.appendChild(palette);
-//     i++;
-//   }
-// }
+// console.log(onOff);
