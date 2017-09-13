@@ -1,13 +1,17 @@
+#title{
+  text-align: center;
+}
+
 .gridPixel{
   border: 1px solid black;
   display: inline-block;
 }
 
 .palette{
-  border: 1px solid black;
+/*  border: 1px solid black;*/
   display: inline-block;
-  height: 24px;
-  width: 24px;
+  height: 30px;
+  width: 30px;
 }
 #grid{
   display: inline-block;
@@ -16,4 +20,19 @@
 
 #colorGrid{
   display: inline-block;
+  text-align: center;
+}
+
+#clear{
+  display: inline-block;
+}
+
+#erase{
+  display: inline-block;
+}
+
+#colorBox{
+  height: 30px;
+  width: 100%;
+
 }
