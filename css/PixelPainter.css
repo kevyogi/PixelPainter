@@ -3,12 +3,14 @@
 }
 */
 body{
-  background-image: url("https://i.pinimg.com/736x/39/71/f1/3971f10939e33d30ef7905b81c96c43b--oil-painting-tips-artist-painting.jpg");
+  background-image: url("https://i.pinimg.com/736x/ca/ec/bb/caecbb5589bf5f74d7447b4e5d8e4ae6--oval-shape-sea-art.jpg");
   background-repeat: no-repeat;
+  background-position: 100% 100%;
   min-height: 100%;
   min-width: 1024px;
   width: 100%;
   height: auto;
+  background-color: #FFF9F1
 }
 
 #pixelPainter{
@@ -40,6 +42,7 @@ body{
   display: inline-block;
   margin-left: 35px;
   border: 1px solid black;
+  background-image: url("https://s3.amazonaws.com/bloc-global-assets/almanac-assets/bootcamps/logos/000/002/654/original/Dev-League.jpg?1467187318")
 }
 
 #colorGrid{
