@@ -7,14 +7,15 @@ var colorDiv = document.createElement("div");
 var gridDiv = document.createElement("div");
 var eraseButton = document.createElement("button");
 var clearButton = document.createElement("button");
-var currentColorBox = document.createElement("div");
-var createButton = document.createElement("button");
+var currentColorBox = document.createElement("button");
+var theBody = document.getElementsByTagName("body")[0];
 
 gridDiv.id = "grid";
 colorDiv.id = "colorGrid";
 eraseButton.id = "erase";
 clearButton.id = "clear";
 currentColorBox.id = "colorBox";
+theBody.id = "theBody";
 
 pixelPainter.appendChild(colorDiv);
 pixelPainter.appendChild(gridDiv);
@@ -24,7 +25,7 @@ colorGrid.appendChild(currentColorBox);
 
 eraseButton.innerHTML = "Erase";
 clearButton.innerHTML = "Clear";
-createButton.innerHTML = "Create";
+currentColorBox.innerHTML = "Ink Color";
 
 function createGrid(length, width, pixelSize){
   for(var i = 0; i < length; i++){
@@ -62,7 +63,6 @@ function createGrid(length, width, pixelSize){
 
 function pickColor(){
   myColor = this.style.backgroundColor;
-  // this.style.border = "thick solid black";
   currentColorBox.style.backgroundColor = myColor;
   onOff = 1;
 }
@@ -87,7 +87,6 @@ eraseButton.addEventListener("click", erase);
 function erase(){
   onOff = 0;
   myColor = "FFFFFF"
-  this.style.backgroundColor = myColor;
   currentColorBox.style.backgroundColor = myColor;
 }
 
@@ -100,4 +99,4 @@ function clear(){
   onOff = 1;
 }
 
-createGrid(50, 50, 10);
+createGrid(23, 20, 20);
