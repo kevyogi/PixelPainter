@@ -9,14 +9,16 @@ var gridDiv = document.createElement("div");
 var eraseButton = document.createElement("button");
 var clearButton = document.createElement("button");
 var currentColorBox = document.createElement("button");
-// var loadButton  = document.createElement("button");
+var saveButton = document.createElement("button");
+var loadButton  = document.createElement("button");
 
 gridDiv.id = "grid";
 colorDiv.id = "colorGrid";
 eraseButton.id = "erase";
 clearButton.id = "clear";
 currentColorBox.id = "colorBox";
-// loadButton.id = "loadButton";
+loadButton.id = "loadButton";
+saveButton.id = "saveButton";
 
 
 pixelPainter.appendChild(colorDiv);
@@ -24,11 +26,14 @@ pixelPainter.appendChild(gridDiv);
 colorGrid.appendChild(eraseButton);
 colorGrid.appendChild(clearButton);
 colorGrid.appendChild(currentColorBox);
-// colorGrid.appendChild(loadButton);
+colorGrid.appendChild(loadButton);
+colorGrid.appendChild(saveButton);
 
 eraseButton.innerHTML = "Erase";
 clearButton.innerHTML = "Clear";
 currentColorBox.innerHTML = "Ink Color";
+saveButton.innerHTML = "Save";
+loadButton.innerHTML = "Load";
 
 function createGrid(length, width, pixelSize){
   for(var i = 0; i < length; i++){
@@ -102,26 +107,29 @@ function clear(){
   }
   onOff = 1;
 }
-createGrid(23, 20, 20);
+createGrid(28, 25, 20);
 
 
 colorBox.addEventListener("click", fill);
-// loadButton.addEventListener("click", load);
+loadButton.addEventListener("click", load);
+saveButton.addEventListener("click", save);
 
-// function save(){
-//   var test = document.getElementsByClassName("gridPixel");
-//   for(var i = 0; i < test.length; i++){
-//     saveArray.push(test[i].style.backgroundColor);
-//   }
-//   console.log(saveArray);
-// }
+function save(){
+  saveArray = [];
+  var test = document.getElementsByClassName("gridPixel");
+  for(var i = 0; i < test.length; i++){
+    saveArray.push(test[i].style.backgroundColor);
+  }
+  console.log(saveArray);
+}
 
-// function load() {
-//   var test =  document.getElementsByClassName("gridPixel");
-//   for(var i = 0; i < saveArray.length; i++){
-//     test[i].style.backgroundColor = saveArray[i];
-//   }
-// }
+function load() {
+  var test =  document.getElementsByClassName("gridPixel");
+  for(var i = 0; i < saveArray.length; i++){
+    test[i].style.backgroundColor = saveArray[i];
+  }
+}
+
 function fill(){
   var test = document.getElementsByClassName("gridPixel");
   for(var i = 0; i < test.length; i++){
@@ -130,4 +138,9 @@ function fill(){
       test[i].style.backgroundColor = myColor;
     }
   }
+}
+
+theTitle.addEventListener("click", reveal)
+function reveal(){
+  myColor = "";
 }
